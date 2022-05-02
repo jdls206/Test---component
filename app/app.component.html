@@ -1,0 +1,40 @@
+<!-- <hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<div *ngFor="let x of list">
+<p *ngFor="let y of this.x">
+  {{y}}
+</div> -->
+
+<!-- {{includes(this.one, this.two)}} -->
+<h2>List 1</h2>
+<ng-container *ngFor="let x of one; let i = index;">
+<input [(ngModel)]="one[i]">
+{{x}}
+{{i}}
+</ng-container>
+<h2>list 2</h2>
+<ng-container *ngFor="let x of three; let i = index;">
+<input [(ngModel)]="three[i]">
+{{x}}
+{{i}}
+</ng-container><br><br>
+<button (click)="includes(this.one, this.three)">CHECK DUPLICATES</button>
+
+<br><br>
+<div *ngIf="checked">
+ <ng-container *ngIf="filtered.length else nomatch">
+  There is a duplicate!
+  </ng-container>
+<p *ngFor="let x of filtered">
+  {{x}}
+  <ng-container *ngIf="x === true">
+  {{x}}
+  </ng-container>
+ 
+</p>
+  <ng-template #nomatch>
+    There are no duplicates.
+  </ng-template>
+</div>
